@@ -147,7 +147,6 @@ describe('shBidAdapter', () => {
   describe('interpretResponse', function () {
     const vastXml = '<?xml version="1.0" encoding="utf-8"?><VAST version="3.0"><Error><![CDATA[https://static.showheroes.com/shim.gif]]></Error></VAST>'
 
-    const callback_won = 'https://test.com/track/?ver=15&session_id=01ecd03ce381505ccdeb88e555b05001&category=request_session&type=event&request_session_id=01ecd03ce381505ccdeb88e555b05001&label=prebid_won&reason=ok'
     const basicResponse = {
       cur: 'EUR',
       seatbid: [{
@@ -161,9 +160,6 @@ describe('shBidAdapter', () => {
           mtype: 2, // 2 = video
           adomain: adomain,
           ext: {
-            callbacks: {
-              won: [callback_won],
-            },
             extra: 'test',
           },
         }],
@@ -193,9 +189,6 @@ describe('shBidAdapter', () => {
               advertiserDomains: adomain
             },
             vastXml: vastXml,
-            callbacks: {
-              won: [callback_won],
-            },
             extra: 'test',
           }
         ]
@@ -285,9 +278,6 @@ describe('shBidAdapter', () => {
             mtype: 1, // 1 = banner
             adomain: adomain,
             ext: {
-              callbacks: {
-                won: [callback_won],
-              },
               extra: 'test',
             },
           }],
@@ -311,9 +301,6 @@ describe('shBidAdapter', () => {
             advertiserDomains: adomain,
           },
           ad: '<div>test banner</div>',
-          callbacks: {
-            won: [callback_won],
-          },
           extra: 'test',
         }
       ];

@@ -1,9 +1,7 @@
 import {
   deepAccess,
   deepSetValue,
-  triggerPixel,
   isFn,
-  logInfo
 } from '../src/utils.js';
 import { Renderer } from '../src/Renderer.js';
 import { ortbConverter } from '../libraries/ortbConverter/converter.js';
@@ -66,7 +64,6 @@ const converter = ortbConverter({
         bidResponse.renderer = createRenderer(bidResponse, renderConfig);
       }
     }
-    bidResponse.callbacks = bid.ext?.callbacks;
     bidResponse.extra = bid.ext?.extra;
     return bidResponse;
   },
@@ -131,15 +128,6 @@ export const spec = {
     }
 
     return syncs;
-  },
-
-  onBidWon(bid) {
-    if (bid.callbacks) {
-      triggerPixel(bid.callbacks.won);
-    }
-    logInfo(
-      `Showheroes adapter won the auction. Bid id: ${bid.bidId || bid.requestId}`
-    );
   },
 };
 
